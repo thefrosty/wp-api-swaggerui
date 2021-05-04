@@ -1,15 +1,68 @@
 {
-    "name": "jonyextenz/wp-api-swaggerui",
-    "description": "WordPress REST API SwaggerUI Doc Generator",
-    "type": "project",
-    "authors": [
-        {
-            "name": "Agus Suroyo",
-            "email": "jony.extenz@gmail.com"
-        }
-    ],
-    "minimum-stability": "stable",
-    "require": {
-        "phpunit/phpunit": "4.8.*|5.7.*|7.*"
+  "name": "jonyextenz/wp-api-swaggerui",
+  "description": "WordPress REST API SwaggerUI Doc Generator",
+  "type": "wordpress-plugin",
+  "authors": [
+    {
+      "name": "Agus Suroyo",
+      "email": "jony.extenz@gmail.com"
+    },
+    {
+      "name": "Austin Passy",
+      "email": "thefrosty@users.noreply.github.com",
+      "homepage": "https://austin.passy.co",
+      "role": "Developer"
     }
+  ],
+  "config": {
+    "sort-packages": true,
+    "optimize-autoloader": true
+  },
+  "require": {
+    "php": "^7.4",
+    "ext-mbstring": "*",
+    "pimple/pimple": "^3.2",
+    "symfony/http-foundation": "^5.2",
+    "thefrosty/wp-utilities": "^2.1"
+  },
+  "require-dev": {
+    "ext-xdebug": "*",
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+    "phpcompatibility/php-compatibility": "^9.3",
+    "phpunit/php-code-coverage": "^6",
+    "phpunit/phpunit": "^7",
+    "roots/wordpress": "~5.7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "TheFrosty\\WpApiSwaggerUi\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "TheFrosty\\WpApiSwaggerUi\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "install-codestandards": [
+      "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run"
+    ],
+    "phpcs": [
+      "bash ./bin/phpcs.sh"
+    ],
+    "phpmd": [
+      "bash ./bin/phpmd.sh"
+    ],
+    "phpunit": [
+      "./vendor/bin/phpunit --colors"
+    ],
+    "phpstan": [
+      "./vendor/bin/phpstan analyze"
+    ],
+    "tests": [
+      "@phpcs",
+      "@phpmd",
+      "@phpunit"
+    ]
+  }
 }
