@@ -6,4 +6,5 @@ node_modules
 /assets
 /package-lock.json
 vendor
+wordpress
 /composer.lock
